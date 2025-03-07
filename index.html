@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Felugró Ablak</title>
+    <style>
+        /* Alap stílusok */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+        }
+
+        /* Modal stílusok */
+        .modal {
+            display: none; /* Alapból rejtve */
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5); /* Áttetsző háttér */
+        }
+
+        .modal-content {
+            background-color: white;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            border-radius: 10px;
+            width: 300px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .close:hover {
+            color: black;
+        }
+
+        /* Gomb stílusok */
+        #okButton {
+            background-color: #4CAF50; /* Zöld szín */
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        #okButton:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- A felugró ablak (modal) -->
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span id="closeModal" class="close">&times;</span>
+            <h2>Kérlek jelentkezz be</h2>
+            <p>Az admin felület használatához be kell jelentkezni.</p>
+            <button id="okButton">OK</button>
+        </div>
+    </div>
+
+    <script>
+        // JavaScript kód
+        const modal = document.getElementById("myModal");
+        const closeModal = document.getElementById("closeModal");
+        const okButton = document.getElementById("okButton");
+
+        // Modal megjelenítése az oldal betöltésekor
+        window.onload = function() {
+            modal.style.display = "block";
+        };
+
+        // X gombra kattintás: visszairányítás az előző oldalra
+        closeModal.onclick = function() {
+            window.history.back(); // Visszalépés az előző oldalra
+        };
+
+        // OK gombra kattintás: átirányítás a megadott linkre
+        okButton.onclick = function() {
+            window.location.href = "https://r.krishapps.com/admin";
+        };
+
+        // Ha a felhasználó kattint a modal-on kívül, akkor is bezárul
+        window.onclick = function(event) {
+            if (event.target === modal) {
+                window.history.back(); // Visszalépés az előző oldalra
+            }
+        };
+    </script>
+</body>
+</html>
